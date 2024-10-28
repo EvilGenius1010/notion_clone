@@ -12,21 +12,42 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useEffect } from "react"
 // import useCreateNewSharedWorker from "@/hooks/useCreateSharedWebWorker"
-
-export default async function Component() {
+import axios from 'axios';
+export default function Component() {
   // const abc = useCreateNewSharedWorker()
   // console.log(abc)
 
-
   const { data: session } = useSession()
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        console.log("dakasnd")
+        const response = await axios.post('/api/protected/checkandadd',
+          { username: "Harshavardhan", email: "dasn@gmail.com" }, {
+          headers: {
+            Authorization: `Bearer ${session.accessToken}`,
+          },
+        });
+
+        const data = response.data;
+        console.log(data)
+        // Use the fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle the error, e.g., display an error message to the user
+      }
+    };
+  }, [])
   if (session && session.user) {
     // const checkForUserData = await axios.post('/api/')
     return (
       <>
         Signed in as {session.user.email || "undefined"} <br />
         <Button onClick={() => signOut()}>Sign out</Button>
-        <Button ><Link href="/a1"> Go</Link></Button>
+        <Button ><Link href="/home"> Go</Link></Button>
       </>
     )
 
