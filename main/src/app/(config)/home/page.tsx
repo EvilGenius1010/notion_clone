@@ -1,19 +1,27 @@
-"use client"
-import Tiptap from "@/components/editor/MainEditor"
-import { useState } from "react"
-import usePageDataFetch from "@/hooks/usePageDataFetch"
-import CurrentPath from "@/components/editor/ShortBreadcrumb"
-import { BreadcrumbDemo } from "@/components/editor/LongBreadcrumb"
-import useCreateNewSharedWorker from "@/hooks/useCreateSharedWebWorker"
+"use client";
+
+import TipTapEditor from "@/components/editor/MainEditor"
+import { Button } from "@/components/ui/button";
+import useModifiedContent from "@/store/modifiedPageContent";
+import { useEffect } from "react";
+import { generateAESKey } from "@/lib/encryptionutil";
+
 
 export default function Home() {
-  const [PageTitles, setPageTitles] = useState<string | null>(null)
-  // const retdata = usePageDataFetch("abc")
-  useCreateNewSharedWorker()
+  // const { content, inc } = useModifiedContent()
+  useEffect(() => {
+    async () => {
+      console.log("dansk")
+      const secretKey = await generateAESKey()
+      console.log(secretKey)
+    }
+  }, [])
 
-  return (<>
-    {/* {retdata.data.msg.length >= 3 ? <BreadcrumbDemo /> : <CurrentPath />} */}
-    <BreadcrumbDemo />
-    <Tiptap />
-  </>)
+  return (
+    <>
+      <TipTapEditor />
+    </>
+  )
 }
+
+

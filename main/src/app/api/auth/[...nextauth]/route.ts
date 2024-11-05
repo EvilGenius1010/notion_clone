@@ -20,9 +20,20 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENTSECRET || "",
     })
   ],
-  // callbacks:{
-  //
-  // }
+  callbacks: {
+    // async redirect({ url, baseUrl }) {
+    //   // Allows relative callback URLs
+    //   if (url.startsWith("/")) return `${baseUrl}${url}`
+    //   return baseUrl
+    // }
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token and user id from a provider.
+      session.accessToken = token?.accessToken
+      session.user.id = token?.id
+
+      return session
+    }
+  }
 })
 
 export { handler as GET, handler as POST }

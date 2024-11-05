@@ -24,7 +24,7 @@ export default function Component() {
 
     const fetchData = async () => {
       try {
-        console.log("dakasnd")
+        console.log(session.accessToken)
         const response = await axios.post('/api/protected/checkandadd',
           { username: "Harshavardhan", email: "dasn@gmail.com" }, {
           headers: {
@@ -45,6 +45,7 @@ export default function Component() {
     // const checkForUserData = await axios.post('/api/')
     return (
       <>
+        {session.accessToken}
         Signed in as {session.user.email || "undefined"} <br />
         <Button onClick={() => signOut()}>Sign out</Button>
         <Button ><Link href="/home"> Go</Link></Button>
