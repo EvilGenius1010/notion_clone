@@ -28,7 +28,7 @@ export function Home() {
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { generateAESKey } from "@/lib/encryptionutil";
-import { processUserContentChanges } from "@/lib/utils";
+import processUserContentChanges from "@/lib/utils";
 
 const TiptapEditor = () => {
   const [timeoutExists, setTimeoutExists] = useState(null)
@@ -41,10 +41,9 @@ const TiptapEditor = () => {
         clearTimeout(timeoutExists);
       }//@ts-ignore
       setTimeoutExists(setTimeout(() => {
-        console.log(html)
+        // console.log(html)
         processUserContentChanges(html)
         const differenceVar = getDiff("<p>Hello World! 🌎️daad</p>", html)
-        console.log(differenceVar)
         setTimeoutExists(null);
       }, 2000))
 
