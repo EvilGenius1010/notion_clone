@@ -35,6 +35,7 @@ export default function Component() {
         const data = response.data;
         console.log(data)
         // Use the fetched data
+        initSqlWasm()
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle the error, e.g., display an error message to the user

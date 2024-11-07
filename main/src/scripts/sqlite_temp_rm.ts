@@ -39,42 +39,31 @@
 
 
 
-import { useEffect, useState } from "react";
-import initSqlJs from "sql.js";
+// import { useEffect, useState } from "react";
+// import initSqlJs from "sql.js";
+//
+// const [rows, setRows] = useState([]);
+//
+// export default function initSqlWasm() {
+//   const [db, setDb] = useState(null);
+//   //why use useState here?
+//   // Load sql.js and initialize a new database
+//   const loadSqlWasm = async () => {
+//     try {
+//       const SQL = initSqlJs({ locateFile: (file) => `/sql-wasm.wasm`, }).then(
+//         (SQL) => console.log("SQL db initialized.")
+//       );
+//       //wasm file located in the public dir
+//
+//       // const database = new SQL.Database(); // Creates an in-memory database
+//       // //@ts-ignore
+//       // setDb(database);
+//     } catch (error) {
+//       console.error("Failed to initialize SQL.js:", error);
+//     }
+//   };
+//
+//   loadSqlWasm();
+//   return db;
+// }
 
-const [rows, setRows] = useState([]);
-
-export default function initSqlWasm() {
-  const [db, setDb] = useState(null);
-  //why use useState here?
-  useEffect(() => {
-    // Load sql.js and initialize a new database
-    const loadSqlWasm = async () => {
-      try {
-        const SQL = await initSqlJs({ locateFile: (file) => `/sql-wasm.wasm`, });
-        const database = new SQL.Database(); // Creates an in-memory database
-        //@ts-ignore
-        setDb(database);
-      } catch (error) {
-        console.error("Failed to initialize SQL.js:", error);
-      }
-    };
-
-    loadSqlWasm();
-  }, []);
-  return db;
-}
-
-export function writeToSQLite(data: string[]) {
-  const db = initSqlJs()
-
-  data.forEach((item, index) => {
-    db.run("INSERT INTO test (id,name) VALUES (?,?)", [index, item])
-  })
-  const result = db.exec("SELECT * FROM test");
-  if (result[0]) {
-    // Process rows and store in state
-    const values = result[0].values;
-    setRows(values);
-  }
-}
