@@ -20,7 +20,7 @@
     "clsx": "^2.1.1",
     "diff-match-patch": "^1.0.5",
     "lucide-react": "^0.441.0",
-    "next": "14.2.12",
+    "next": "15.0.2",
     "next-auth": "^4.24.7",
     "prisma": "^5.19.1",
     "react": "^18",
