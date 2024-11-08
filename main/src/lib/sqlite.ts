@@ -75,8 +75,12 @@ export function useSQLite(): SQLiteHook {
   return { db: database, error, loading };
 }
 
-export function useSQLiteRead(query: string) {
+export function useSQLiteRead(data: string) {
   //sanitise SQL query
+  const { db } = useSQLite();
+  if (db) {
+    db.run('INSERT INTO users (name, email) VALUES (?, ?)', ['Test', 'test@test.com']);
+  }
 
 
 }

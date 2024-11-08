@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 //@ts-ignore
 export async function POST(req,) {
   try {
-    const session = await getServerSession(req)
+    // const session = await getServerSession(req)
     const body = await req?.json();
     //if something returned from this, it means another pair exists with given username or email.
     const existingUser = await prisma.user.findFirst({
@@ -26,7 +26,7 @@ export async function POST(req,) {
         ],
       },
     });
-    console.log(existingUser)
+    console.log("ads", existingUser)
     if (existingUser != null) {//add logic to check which of uname or email is used.
       return NextResponse.json({ msg: "Username or email already exists." })
     }
@@ -35,10 +35,22 @@ export async function POST(req,) {
       const data = await prisma.pages.findMany({
         where: {
           userOwner: body.username
+        },
+        select: {
+          title: true,
+          userOwner: false,
+          pageid: false,
+          PageSlices: {
+            select: {
+              order: true,
+              content: true
+            }
+          }
         }
-      })
 
-      if (data == null) { //no user data exists.
+      })
+      console.log(data)
+      if (data.length == 0) { //no user data exists.
         // create user data in db
         const data = await prisma.user.create({
           data: {
@@ -50,16 +62,32 @@ export async function POST(req,) {
           data: {
             title: "Hello World!",
             userOwner: data.username,
-            content: "Welcome to your first page. Start here."
+            PageSlices: {
+              create: {
+                order: 1,
+                content: "Welcome to your first page. Start from here."
+              }
+            }
           }
         })
 
-        console.log(createPages)
+        console.log("dasda", createPages)
         //return those pages
 
         const fetchPages = await prisma.pages.findMany({
           where: {
             userOwner: body?.username
+          },
+          select: {
+            title: true,
+            userOwner: false,
+            pageid: false,
+            PageSlices: {
+              select: {
+                order: true,
+                content: true
+              }
+            }
           }
         })
         console.log(fetchPages)
@@ -68,12 +96,12 @@ export async function POST(req,) {
 
       }
       else {
-        if (session) {
-          return NextResponse.json({ data })
-        }
-        else {
-          return NextResponse.json({ msg: "Invalid auth code." })
-        }
+        return NextResponse.json({ data })
+        // if (session) {
+        // }
+        // else {
+        //   return NextResponse.json({ msg: "Invalid auth code." })
+        // }
       }
     }
 

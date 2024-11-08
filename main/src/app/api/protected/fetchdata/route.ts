@@ -1,3 +1,4 @@
+//needed?
 import prisma from "@/db"
 
 import { NextRequest, NextResponse } from "next/server"
@@ -6,13 +7,16 @@ export async function POST(req: NextRequest) {
   const body = await req?.json();
   const getpages = await prisma.pages.findMany({
     where: {
-      userOwner: "abc"
+      userOwner: body?.username
     },
     select: {
-      pageid: false,
       title: true,
-      content: true,
-      userOwner: false
+      PageSlices: {
+        select: {
+          order: true,
+          content: true
+        }
+      }
     }
   })
 

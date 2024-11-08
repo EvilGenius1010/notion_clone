@@ -39,7 +39,8 @@ const TiptapEditor = () => {
       const html = editor.getHTML();
       if (timeoutExists) {
         clearTimeout(timeoutExists);
-      }//@ts-ignore
+      }
+      //@ts-ignore
       setTimeoutExists(setTimeout(() => {
         // console.log(html)
         processUserContentChanges(html)
@@ -47,7 +48,8 @@ const TiptapEditor = () => {
         setTimeoutExists(null);
       }, 2000))
 
-    }
+    },
+    immediatelyRender: false
   });
 
   return (<EditorContent editor={editor} />);

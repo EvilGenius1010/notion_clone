@@ -21,9 +21,21 @@ model User {
 }
 
 model Pages {
-  title     String?
-  pageid    String  @id @default(cuid())
-  Owner     User    @relation(fields: [userOwner], references: [username]) //relation toemail //shud not exist in db.
-  userOwner String //this is used as key here.
-  content   String?
+  title      String?
+  pageid     String       @id @default(cuid())
+  Owner      User         @relation(fields: [userOwner], references: [username]) //relation toemail //shud not exist in db.
+  userOwner  String //this is used as key here.
+  //  content    String?
+  PageSlices PageSlices[]
+}
+
+model PageSlices {
+  blockid String  @id @default(cuid())
+  page    Pages   @relation(fields: [pageid], references: [pageid])
+  pageid  String // Foreign key for Pages
+  order   Int // Order of the block within the page
+  content String? // Content of the block
+  //blockType String? // Optional field to specify the type of block (e.g., text, image, header)
+
+  @@unique([pageid, order]) // Ensures each block has a unique order within a page 
 }
