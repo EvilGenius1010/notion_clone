@@ -15,6 +15,11 @@ import Link from "next/link"
 import { useEffect } from "react"
 // import useCreateNewSharedWorker from "@/hooks/useCreateSharedWebWorker"
 import axios from 'axios';
+import useOldContent from "@/store/oldPageContent"
+
+
+
+
 export default function Component() {
   // const abc = useCreateNewSharedWorker()
   // console.log(abc)
@@ -44,6 +49,13 @@ export default function Component() {
   }, [])
   if (session && session.user) {
     // const checkForUserData = await axios.post('/api/')
+    useEffect(() => {
+      (async () => {
+        const retrieveLatestSave = await axios.post("/api/protected/checkandadd")
+        const abc = retrieveLatestSave.data
+        useOldContent(state => state.addLatestContent(abc))
+      })
+    }, [])
     return (
       <>
         {session.accessToken}
