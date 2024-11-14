@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const getData = await useFetchPageContent("hkop@gmadsil.com", "dajio92")
-      console.log("fsakdnask", getData?.msg[0]?.title)
+      // console.log("fsakdnask", getData?.msg[0]?.title)
 
       if (getData?.msg?.length > 0) {
         const contentStruct = getData.msg.map((item: any) => ({
@@ -40,8 +40,8 @@ export default function Home() {
       }
 
 
-      console.log("eqnoqwoeq")
-      console.log("dasskndal", abc)
+      // console.log("eqnoqwoeq")
+      // console.log("dasskndal", abc)
 
       // console.log("daksjdbs", abc)
     })()
