@@ -11,7 +11,7 @@ import useOldContent from "@/store/oldPageContent"
 
 import { Card } from "@/components/ui/card"
 import { Search, Laptop, Users } from "lucide-react"
-
+import { cn } from "@/lib/utils";
 
 // export default function Component() {
 //   // const abc = useCreateNewSharedWorker()
@@ -114,6 +114,9 @@ export default function Component() {
         <section className="w-full py-12 md:py-24 relative">
           <div className="container px-4 md:px-6 relative">
             <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+              <Card1 />
+              <Card2 />
+              <Card3 />
               <Card className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                 <Search className="h-8 w-8 mb-4 text-[#00689e]" />
                 <h3 className="text-xl font-serif mb-2 text-black">Powerful Search</h3>
@@ -151,6 +154,100 @@ export default function Component() {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
+  )
+}
+
+
+function Card1() {
+  return (
+    <>
+      <div className="max-w-xs w-full">
+        <div
+          className={cn(
+            "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
+            "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
+            // Preload hover image by setting it in a pseudo-element
+            "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
+            "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)]",
+            "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
+            "transition-all duration-500"
+          )}
+        >
+          <div className="text  z-50">
+            <Search></Search>
+            <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
+              Powerful Search
+            </h1>
+            <p className="font-normal text-base text-gray-50 relative my-4">
+              Quickly find specific information within your notes using advanced search capabilities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </>
+  )
+}
+
+function Card2() {
+  return (
+    <>
+      <div className="max-w-xs w-full">
+        <div
+          className={cn(
+            "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
+            "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
+            // Preload hover image by setting it in a pseudo-element
+            "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
+            "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)]",
+            "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
+            "transition-all duration-500"
+          )}
+        >
+          <div className="text  z-50">
+            <Laptop></Laptop>
+            <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
+              Cross-Platform Compatibility
+            </h1>
+            <p className="font-normal text-base text-gray-50 relative my-4">
+              Access your notes from any device, anytime, anywhere.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </>
+  )
+}
+
+function Card3() {
+  return (
+    <>
+      <div className="max-w-xs w-full rounded-xl">
+        <div
+          className={cn(
+            "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
+            "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
+            // Preload hover image by setting it in a pseudo-element
+            "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
+            "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)]",
+            "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
+            "transition-all duration-500"
+          )}
+        >
+          <div className="text  z-50">
+            <Users></Users>
+            <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
+              Real-time Collaboration
+            </h1>
+            <p className="font-normal text-base text-gray-50 relative my-4">
+              Work seamlessly with your team, editing documents simultaneously.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </>
   )
 }
