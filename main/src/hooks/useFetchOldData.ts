@@ -6,7 +6,7 @@ export default async function useFetchPageContent(email: string, username: strin
   //     email: email
   //   }
   // })
-  console.log("daslmlml")
+
   const checkUserExistence = await axios.post("/api/protected/fetchdata", {
     email: email,
     username: username

@@ -1,16 +1,9 @@
 //store latest saved change.
 
 import { create } from "zustand";
+import { ContentStruct } from "@/types/zustandtypes";
 
-type ContentStruct = {
-  title: string,
-  PageSlices: BlockStruct[]
-}
 
-type BlockStruct = {
-  order: number,
-  content: string
-}
 
 type OldContentType = {
   content: ContentStruct[],
