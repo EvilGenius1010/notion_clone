@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { CreateMetadata, getDiff } from "@/lib/datautils";
 import { BreadcrumbDemo } from "@/components/editor/LongBreadcrumb";
 
+
+import useModifiedContent from "@/store/modifiedPageContent"
+import uniqid from 'uniqid';
+import { blockMetadata } from "@/types/zustandtypes"
+
+
 export function Home() {
   const [pageTitles, setPageTitles] = useState<string | null>(null);
   const [editorContent, setEditorContent] = useState<string>(""); // State for editor content
@@ -27,8 +33,8 @@ export function Home() {
 
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { generateAESKey } from "@/lib/encryptionutil";
-import processUserContentChanges from "@/lib/utils";
+import useOldContent from "@/store/oldPageContent";
+
 
 const TiptapEditor = () => {
   const [timeoutExists, setTimeoutExists] = useState(null)
@@ -43,14 +49,48 @@ const TiptapEditor = () => {
       //@ts-ignore
       setTimeoutExists(setTimeout(() => {
         // console.log(html)
-        processUserContentChanges(html)
-        const differenceVar = getDiff("<p>Hello World! 🌎️daad</p>", html)
+        //calling in below function breaks rules of hooks.
+        // ProcessUserContentChanges(html)
+        handleContentChanges(html)
+
         setTimeoutExists(null);
       }, 2000))
 
     },
     immediatelyRender: false
   });
+
+  const savelatestSavedContent = useModifiedContent((state) => state.setModifiedContent)
+  const readLatestSave = useModifiedContent(state=>state.modifiedContent)
+  const readOldContent = useOldContent(state=>state.content)
+  const saveOldContent = useOldContent((state)=>state.addLatestContent)
+
+
+  function handleContentChanges(html:string){
+
+    const blocks = CreateMetadata(html)
+    let metadata_final:blockMetadata[]=[];
+    blocks.forEach((item)=>{
+      metadata_final.push({
+        uid:uniqid.time(),
+        content:item
+      })
+    })
+    console.log(metadata_final)
+    //save to modifiedPageContent first?
+  
+  
+  
+    
+    savelatestSavedContent([{title:"First one",PageSlices:metadata_final}])
+    console.log(readLatestSave)
+
+
+
+    
+    // const differenceVar = getDiff(readOldContent,readLatestSave)
+    // const differenceVar = 
+  }
 
   return (<EditorContent editor={editor} />);
 };

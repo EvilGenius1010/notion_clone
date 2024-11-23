@@ -12,6 +12,8 @@ import useOldContent from "@/store/oldPageContent"
 import { Card } from "@/components/ui/card"
 import { Search, Laptop, Users } from "lucide-react"
 import { cn } from "@/lib/utils";
+import { FocusCards } from "@/components/ui/focus-cards"
+
 
 // export default function Component() {
 //   // const abc = useCreateNewSharedWorker()
@@ -68,6 +70,17 @@ import { cn } from "@/lib/utils";
 //   )
 // }
 
+
+const cardComponents=[
+  {title:"Lets see",src:"https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",content:`dslkdnfsldkklsdnfad
+    ADASDASD
+    da
+    
+    a`,GIFsrc:"/Users/harshavardhankolhatkar04/Desktop/Projects/Cohort/0-1/notion_clone/main/public/house.gif"},
+  {title:"Man",src:"https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",content:"sad;'ss';dla';sdl;'as",GIFsrc:"/@/../public/house.gif"},
+  
+]
+
 export default function Component() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#bce7fd] to-white">
@@ -82,7 +95,7 @@ export default function Component() {
           <Link className="text-sm tracking-wide text-[#00264d] hover:text-[#00689e] transition-colors" href="#">
             Collaborate
           </Link>
-          <Link className="text-sm tracking-wide text-[#00264d] hover:text-[#00689e] transition-colors" href="/login" >
+          <Link className="text-sm tracking-wide text-[#00264d] hover:text-[#00689e] transition-colors" href="/home" >
             Login
           </Link>
         </nav>
@@ -111,6 +124,7 @@ export default function Component() {
             </div>
           </div>
         </section>
+              <FocusCards cards={cardComponents}/>
         <section className="w-full py-12 md:py-24 relative">
           <div className="container px-4 md:px-6 relative">
             <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -159,14 +173,14 @@ export default function Component() {
 }
 
 
-function Card1() {
+export function Card1() {
   return (
     <>
       <div className="max-w-xs w-full">
         <div
           className={cn(
             "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
-            "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
+            "bg-white/80 bg-cover",
             // Preload hover image by setting it in a pseudo-element
             "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
             "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)]",
@@ -175,11 +189,11 @@ function Card1() {
           )}
         >
           <div className="text  z-50">
-            <Search></Search>
-            <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
+            <Search className="text-[#00689e]"></Search>
+            <h1 className="font-bold text-xl md:text-3xl text-black relative">
               Powerful Search
             </h1>
-            <p className="font-normal text-base text-gray-50 relative my-4">
+            <p className="font-normal text-base text-[#004777] relative my-4">
               Quickly find specific information within your notes using advanced search capabilities.
             </p>
           </div>
@@ -190,7 +204,7 @@ function Card1() {
   )
 }
 
-function Card2() {
+export function Card2() {
   return (
     <>
       <div className="max-w-xs w-full">
@@ -221,7 +235,7 @@ function Card2() {
   )
 }
 
-function Card3() {
+export function Card3() {
   return (
     <>
       <div className="max-w-xs w-full rounded-xl">

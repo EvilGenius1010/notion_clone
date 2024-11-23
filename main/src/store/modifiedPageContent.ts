@@ -22,20 +22,30 @@
 // //
 
 import { create } from "zustand";
+import { ContentStruct } from "@/types/zustandtypes";
+
+
+
+// type BlockStruct = {
+//   uid:string ,
+//   content: string
+// }
+
+
 
 // We can use interface here as well
 type StateType = {
-  modifiedContent: string;     // the variable that we'll change using increment and decrement functions
-  setModContent: (someText: string) => void;
+  modifiedContent: ContentStruct[];     // the variable that we'll change using increment and decrement functions
+  setModifiedContent: (someText:ContentStruct[] ) => void;
   // both increment and decrement are anonymous functions that have void return type.
 }
 
 const useModifiedContent = create<StateType>((set) => ({
   // state variables
-  modifiedContent: "",
-  setModContent: (someText) =>
-    set((state: StateType) => ({
-      modifiedContent: state.modifiedContent + someText
+  modifiedContent: [],
+  setModifiedContent: (someText) =>
+    set((state) => ({
+      modifiedContent: someText
     })),
 
 }))

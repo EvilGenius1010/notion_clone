@@ -28,6 +28,7 @@
     "sql.js": "^1.11.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "uniqid": "^5.4.0",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/sql.js": "^1.4.9",
+    "@types/uniqid": "^5.3.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.12",
     "postcss": "^8",
