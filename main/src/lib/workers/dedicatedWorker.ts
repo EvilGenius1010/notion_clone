@@ -6,9 +6,15 @@ self.onmessage = (event) => {
     console.log("danklkdnslnkdan")
 
   }
-  setInterval(() => {
-    count++;
-    self.postMessage(count);
-  }, 1000);
-  console.log(count)
+  // setInterval(() => {
+  //   count++;
+  //   self.postMessage(count);
+  // }, 1000);
+  // console.log(count)
+
+  if(event.data == "update_data"){
+    
+  }
+
 };
+

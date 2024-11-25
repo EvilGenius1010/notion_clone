@@ -34,9 +34,13 @@ export function Home() {
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import useOldContent from "@/store/oldPageContent";
+import { computePolynomialHash } from "@/lib/encryptionutil";
 
+type tiptapProps={
+  onUpdate:()=>void
+}
 
-const TiptapEditor = () => {
+const TiptapEditor = (props:tiptapProps) => {
   const [timeoutExists, setTimeoutExists] = useState(null)
   const editor = useEditor({
     extensions: [StarterKit],
@@ -51,6 +55,7 @@ const TiptapEditor = () => {
         // console.log(html)
         //calling in below function breaks rules of hooks.
         // ProcessUserContentChanges(html)
+        props.onUpdate()
         handleContentChanges(html)
 
         setTimeoutExists(null);
@@ -70,13 +75,15 @@ const TiptapEditor = () => {
 
     const blocks = CreateMetadata(html)
     let metadata_final:blockMetadata[]=[];
+    const starttime = performance.now()
     blocks.forEach((item)=>{
       metadata_final.push({
-        uid:uniqid.time(),
+        uid:computePolynomialHash(item).toString(),
         content:item
       })
     })
-    console.log(metadata_final)
+    const timetaken = performance.now()-starttime
+    console.log(metadata_final,timetaken)
     //save to modifiedPageContent first?
   
   
@@ -84,6 +91,7 @@ const TiptapEditor = () => {
     
     savelatestSavedContent([{title:"First one",PageSlices:metadata_final}])
     console.log(readLatestSave)
+
 
 
 
