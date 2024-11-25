@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <>
-      <TipTapEditor onUpdate={processChanges()}/>
+      <TipTapEditor onUpdate={processChanges}/>
     </>
   )
 }

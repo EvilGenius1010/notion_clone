@@ -35,6 +35,7 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import useOldContent from "@/store/oldPageContent";
 import { computePolynomialHash } from "@/lib/encryptionutil";
+import { compareChanges } from "@/lib/utils";
 
 type tiptapProps={
   onUpdate:()=>void
@@ -57,6 +58,7 @@ const TiptapEditor = (props:tiptapProps) => {
         // ProcessUserContentChanges(html)
         props.onUpdate()
         handleContentChanges(html)
+        compareChanges(readOldContent,readLatestSave)
 
         setTimeoutExists(null);
       }, 2000))
@@ -66,8 +68,9 @@ const TiptapEditor = (props:tiptapProps) => {
   });
 
   const savelatestSavedContent = useModifiedContent((state) => state.setModifiedContent)
-  const readLatestSave = useModifiedContent(state=>state.modifiedContent)
-  const readOldContent = useOldContent(state=>state.content)
+  const readLatestSave = useModifiedContent.getState().modifiedContent;
+  const readOldContent = useOldContent.getState().content;
+
   const saveOldContent = useOldContent((state)=>state.addLatestContent)
 
 
@@ -90,7 +93,12 @@ const TiptapEditor = (props:tiptapProps) => {
   
     
     savelatestSavedContent([{title:"First one",PageSlices:metadata_final}])
+    
+    //instead of 0th index, acc to url,find the title and use index of that.
+    const{added, removed, modified}=compareChanges(readLatestSave,readOldContent)
     console.log(readLatestSave)
+
+    console.log(added,removed,modified)
 
 
 

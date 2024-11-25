@@ -5,8 +5,8 @@ import initSqlJs, { Database } from 'sql.js';
 let SQL: typeof initSqlJs | null = null;
 let db: Database | null = null;
 
-export async function initDatabase(): Promise<Database> {
-  if (SQL && db) return db;
+export async function initDatabase(): Promise<Database|null> {
+  if (db) return db;
 
   try {
     SQL = await initSqlJs({
@@ -16,13 +16,13 @@ export async function initDatabase(): Promise<Database> {
     db = new SQL.Database();
 
     // Initialize your database schema
-    db.run(`
-      CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        email TEXT UNIQUE
-      );
-    `);
+    // db.run(`
+    //   CREATE TABLE IF NOT EXISTS users (
+    //     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    //     name TEXT,
+    //     email TEXT UNIQUE
+    //   );
+    // `);
 
     return db;
   } catch (err) {
@@ -40,7 +40,7 @@ interface SQLiteHook {
   loading: boolean;
 }
 
-export function useSQLite(): SQLiteHook {
+export function useSQLiteNormalHook(): SQLiteHook {
   const [database, setDatabase] = useState<Database | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -83,4 +83,8 @@ export function useSQLiteRead(data: string) {
   }
 
 
+}
+
+export function useSQLite(){
+  
 }

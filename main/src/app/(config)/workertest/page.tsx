@@ -1,25 +1,33 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 
 const MyPage = () => {
   const [count, setCount] = useState(0);
-  const fa = {title:"dakl",lao:"dalsl"}
+  const fa = { title: "dakl", lao: "dalsl" };
+
   useEffect(() => {
-    // Create a new web worker
-    const worker = new Worker(new URL('../../../lib/workers/dedicatedWorker.ts', import.meta.url));
-    // const worker = new Worker('../../../lib/workers/dedicatedWorker.ts')
-    // Listen for messages from the web worker
-    worker.onmessage = (event) => {
+    // Create a new SharedWorker
+    const worker = new SharedWorker(new URL('../../../lib/workers/sharedWorker.ts', import.meta.url));
+
+    // Start the communication port
+    worker.port.start();
+
+    // Listen for messages from the worker
+    worker.port.onmessage = (event) => {
+      console.log(event.data)
+      if(event.data>=1){
       setCount(event.data);
+      }
     };
 
-    // Send a message to the web worker to start processing
-    worker.postMessage(fa);
+    // Send a message to the worker
+    worker.port.postMessage("initdb");
+    console.log("eoqwpeqwoie")
 
-    // Clean up the web worker when the component unmounts
-    return () => {
-      worker.terminate();
-    };
+    // Cleanup: Close the worker port on component unmount
+    // return () => {
+    //   worker.port.close();
+    // };
   }, []);
 
   return (

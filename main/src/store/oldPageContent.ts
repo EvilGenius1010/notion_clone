@@ -12,7 +12,7 @@ type OldContentType = {
 
 
 const useOldContent = create<OldContentType>((set) => ({
-  content: [],
+  content: [{title:"Pehla",PageSlices:[]}],
   addLatestContent: (changes) => {
     set((state) => ({
 

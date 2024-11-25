@@ -1,5 +1,5 @@
 'use client'
-import { useSQLite } from '@/lib/sqlite';
+import { useSQLite } from '@/store/sqlite';
 import { useEffect } from 'react';
 export default function MyComponent() {
   const { db, error, loading } = useSQLite();
