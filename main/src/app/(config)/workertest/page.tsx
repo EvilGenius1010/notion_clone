@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const MyPage = () => {
   const [count, setCount] = useState(0);
-
+  const fa = {title:"dakl",lao:"dalsl"}
   useEffect(() => {
     // Create a new web worker
     const worker = new Worker(new URL('../../../lib/workers/dedicatedWorker.ts', import.meta.url));
@@ -14,7 +14,7 @@ const MyPage = () => {
     };
 
     // Send a message to the web worker to start processing
-    worker.postMessage('start');
+    worker.postMessage(fa);
 
     // Clean up the web worker when the component unmounts
     return () => {

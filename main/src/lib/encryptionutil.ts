@@ -62,3 +62,18 @@ async function checkAndEncryptData(data: string) {
 
 
 }
+
+
+
+export function computePolynomialHash(content:string){
+  let hash = 0;
+  let power = 1;
+  const mod = 1e9+7
+  const base = 103;
+  for (let i = 0; i < content.length; i++) {
+    hash = (hash + (content.charCodeAt(i) * power) % mod) % mod;
+    power = (power * base) % mod;
+  }
+
+  return hash;
+}
