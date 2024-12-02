@@ -6,8 +6,15 @@ import useModifiedContent from "@/store/modifiedPageContent";
 import { useEffect } from "react";
 import useOldContent from "@/store/oldPageContent";
 import useFetchPageContent from "@/hooks/useFetchOldData";
+import { useShortcutSpecifier } from "@/store/shortcut";
+import ShortcutMenu from "@/components/editor/ShortcutMenu";
+
+
+
+
 
 export default function Home() {
+  const ShortcutMenuVisibility = useShortcutSpecifier.getState().menuVisibility
   // const { content, inc } = useModifiedContent()
   // useEffect(() => {
   //   async () => {
@@ -22,35 +29,36 @@ export default function Home() {
 
   const latestSave = useOldContent(state => state.addLatestContent)
   const abc = useOldContent(state => state.content)
-  useEffect(() => {
-    (async () => {
-      const getData = await useFetchPageContent("hkop@gmadsil.com", "dajio92")
-      // console.log("fsakdnask", getData?.msg[0]?.title)
+  // useEffect(() => {
+  //   (async () => {
+  //     const getData = await useFetchPageContent("hkop@gmadsil.com", "dajio92")
+  //     // console.log("fsakdnask", getData?.msg[0]?.title)
 
-      if (getData?.msg?.length > 0) {
-        const contentStruct = getData.msg.map((item: any) => ({
-          title: item.title,
-          PageSlices: item.PageSlices.map((slice: any) => ({
-            order: slice.order,
-            content: slice.content
-          }))
-        }));
+  //     if (getData?.msg?.length > 0) {
+  //       const contentStruct = getData.msg.map((item: any) => ({
+  //         title: item.title,
+  //         PageSlices: item.PageSlices.map((slice: any) => ({
+  //           order: slice.order,
+  //           content: slice.content
+  //         }))
+  //       }));
 
-        // latestSave(contentStruct); // Pass array of ContentStruct to latestSave
-      }
+  //       // latestSave(contentStruct); // Pass array of ContentStruct to latestSave
+  //     }
 
 
-      // console.log("eqnoqwoeq")
-      // console.log("dasskndal", abc)
+  //     // console.log("eqnoqwoeq")
+  //     // console.log("dasskndal", abc)
 
-      // console.log("daksjdbs", abc)
-    })()
-  }, [])
+  //     // console.log("daksjdbs", abc)
+  //   })()
+  // }, [])
 
 
   return (
     <>
       <TipTapEditor onUpdate={processChanges}/>
+      {ShortcutMenuVisibility && <ShortcutMenu/>}
     </>
   )
 }

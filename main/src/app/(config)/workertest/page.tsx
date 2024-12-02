@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const MyPage = () => {
   const [count, setCount] = useState(0);
-  const fa = { title: "dakl", lao: "dalsl" };
+  // const fa = { title: "dakl", lao: "dalsl" };
 
   useEffect(() => {
     // Create a new SharedWorker
@@ -21,7 +21,16 @@ const MyPage = () => {
     };
 
     // Send a message to the worker
-    worker.port.postMessage("initdb");
+    worker.port.postMessage({
+      instruction:"initDB",
+    });
+
+    // worker.port.postMessage({
+    //   instruction:"readDataFromDB",
+    //   params:{
+    //     pageName:"main"
+    //   }
+    // })
     console.log("eoqwpeqwoie")
 
     // Cleanup: Close the worker port on component unmount
