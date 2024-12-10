@@ -70,7 +70,7 @@ import { FocusCards } from "@/components/ui/focus-cards"
 //   )
 // }
 
-
+/*
 const cardComponents=[
   {title:"Lets see",src:"https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",content:`dslkdnfsldkklsdnfad
     ADASDASD
@@ -81,7 +81,7 @@ const cardComponents=[
   
 ]
 
-export default function Component() {
+export function Component() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#bce7fd] to-white">
       <header className="px-4 lg:px-6 h-14 flex items-center border-b border-blue-100">
@@ -108,11 +108,11 @@ export default function Component() {
                 <div className="h-12 w-12 bg-[#00689e] rounded-sm mx-auto rotate-12">
                   <span className="text-white font-serif text-2xl leading-loose">藝</span>
                 </div>
-                <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-[#00264d]">
+                <div className="text-4xl md:text-6xl font-serif tracking-tight text-[#00264d]">
                   Where thoughts flow
                   <br />
                   like ink on paper
-                </h1>
+                </div>
                 <p className="max-w-[600px] text-[#004777] md:text-xl mx-auto leading-relaxed">
                   A note-taking experience inspired by the art of Sumi-e, bringing the grace and fluidity of Japanese
                   calligraphy to your digital canvas.
@@ -190,9 +190,9 @@ export function Card1() {
         >
           <div className="text  z-50">
             <Search className="text-[#00689e]"></Search>
-            <h1 className="font-bold text-xl md:text-3xl text-black relative">
+            <div className="font-bold text-xl md:text-3xl text-black relative">
               Powerful Search
-            </h1>
+            </div>
             <p className="font-normal text-base text-[#004777] relative my-4">
               Quickly find specific information within your notes using advanced search capabilities.
             </p>
@@ -221,9 +221,9 @@ export function Card2() {
         >
           <div className="text  z-50">
             <Laptop></Laptop>
-            <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
+            <div className="font-bold text-xl md:text-3xl text-gray-50 relative">
               Cross-Platform Compatibility
-            </h1>
+            </div>
             <p className="font-normal text-base text-gray-50 relative my-4">
               Access your notes from any device, anytime, anywhere.
             </p>
@@ -252,9 +252,9 @@ export function Card3() {
         >
           <div className="text  z-50">
             <Users></Users>
-            <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
+            <div className="font-bold text-xl md:text-3xl text-gray-50 relative">
               Real-time Collaboration
-            </h1>
+            </div>
             <p className="font-normal text-base text-gray-50 relative my-4">
               Work seamlessly with your team, editing documents simultaneously.
             </p>
@@ -264,4 +264,58 @@ export function Card3() {
 
     </>
   )
+}
+*/
+
+export default function FinalComponent(){
+  return(
+    <>
+ <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#bce7fd] to-white">
+  <div className="flex flex-row">
+<div>
+  <TypingEffect />
+  {/* <div className="text-6xl my-8 w-auto ">Superfast Collaboration<br/> Reimagined.</div> */}
+  <div className="text-3xl">Brainstorm ideas with your team <br/>for free.</div>
+</div>
+<div>Testing.</div> {/*Replace with image. */}
+
+  </div>
+  <HoveredCards cardContent={{heading:"das",content:"dasd"}}/>
+  </div>   
+    </>
+    
+  )
+}
+
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect"
+
+
+function TypingEffect(){
+const words = [
+  {text:"Superfast"},
+  {text:"Collaboration"},
+  {text:"Reimagined."},
+]
+return(<>
+<TypewriterEffectSmooth words={words} className="text-6xl my-8"/>
+</>)
+}
+
+type cardText ={
+  heading:string,
+  content:string,
+  customStyles:string
+}
+
+function HoveredCards({cardContent}:{cardContent:cardText}){
+
+  return(
+    <>
+    <div className={`${cardContent.customStyles}`}>
+      
+    dasdas
+    </div>
+    </>
+  )
+
 }

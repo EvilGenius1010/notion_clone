@@ -1,0 +1,3 @@
+[submodule "prisma/migrations/notion_clone_prisma"]
+	path = prisma/migrations/notion_clone_prisma
+	url = https://github.com/EvilGenius1010/notion_clone_prisma.git
