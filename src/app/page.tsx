@@ -1,18 +1,18 @@
 
 
 'use client'
-import { useSession, signIn, signOut } from "next-auth/react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { useEffect } from "react"
-// import useCreateNewSharedWorker from "@/hooks/useCreateSharedWebWorker"
-import axios from 'axios';
-import useOldContent from "@/store/oldPageContent"
+// import { useSession, signIn, signOut } from "next-auth/react"
+// import { Button } from "@/components/ui/button"
+// import Link from "next/link"
+// import { useEffect } from "react"
+// // import useCreateNewSharedWorker from "@/hooks/useCreateSharedWebWorker"
+// import axios from 'axios';
+// import useOldContent from "@/store/oldPageContent"
 
-import { Card } from "@/components/ui/card"
-import { Search, Laptop, Users } from "lucide-react"
-import { cn } from "@/lib/utils";
-import { FocusCards } from "@/components/ui/focus-cards"
+// import { Card } from "@/components/ui/card"
+// import { Search, Laptop, Users } from "lucide-react"
+// import { cn } from "@/lib/utils";
+// import { FocusCards } from "@/components/ui/focus-cards"
 
 
 // export default function Component() {
@@ -273,14 +273,13 @@ export default function FinalComponent(){
  <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#bce7fd] to-white">
   <div className="flex flex-row">
 <div>
-  <TypingEffect />
   {/* <div className="text-6xl my-8 w-auto ">Superfast Collaboration<br/> Reimagined.</div> */}
+  <TypingEffect />
   <div className="text-3xl">Brainstorm ideas with your team <br/>for free.</div>
 </div>
-<div>Testing.</div> {/*Replace with image. */}
 
   </div>
-  <HoveredCards cardContent={{heading:"das",content:"dasd"}}/>
+  {/* <HoveredCards cardContent={{heading:"das",content:"dasd"}}/> */}
   </div>   
     </>
     
@@ -297,7 +296,7 @@ const words = [
   {text:"Reimagined."},
 ]
 return(<>
-<TypewriterEffectSmooth words={words} className="text-6xl my-8"/>
+<TypewriterEffectSmooth words={words} className=""/>
 </>)
 }
 
