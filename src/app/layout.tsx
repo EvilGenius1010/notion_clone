@@ -2,24 +2,14 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./provider";
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 
-const wastedVindey = localFont({
-  src:"./fonts/kugile.ttf",
-  weight:"900"
-})
+const kugile = localFont({
+  src: "./fonts/kugile.ttf",
+  weight: "900",
+});
 
 export const metadata: Metadata = {
-  title: "mOdO",
+  title: "caderno",
   description: "Next Generation Collaboration Tool.",
 };
 
@@ -28,14 +18,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (<Providers>
-    <html lang="en">
-      <body
-        className={` ${wastedVindey.className} antialiased text-slate-950`}>
-        {children}
-      </body>
-    </html>
-  </Providers>
-
+  return (
+    <Providers>
+      <html
+        lang="en"
+        style={{
+           // Ensure the html takes the full height
+          backgroundImage:
+            "linear-gradient(rgba(188,231,253,1), rgba(255,245,190,1))",
+          backgroundSize: "cover",
+        }}
+      >
+        <body
+          className={`${kugile.className} antialiased text-slate-950`}
+          style={{ height: "100%" }} // Ensure body also takes the full height
+        >
+          {children}
+        </body>
+      </html>
+    </Providers>
   );
 }

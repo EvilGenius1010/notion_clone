@@ -1,6 +1,7 @@
 
 
 'use client'
+
 // import { useSession, signIn, signOut } from "next-auth/react"
 // import { Button } from "@/components/ui/button"
 // import Link from "next/link"
@@ -267,54 +268,121 @@ export function Card3() {
 }
 */
 
+
+
+
+// export default function FinalComponent(){
+//   return(
+//     <>
+//  <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#bce7fd] to-white">
+//   <div className="flex flex-row">
+// <div>
+//   {/* <div className="text-6xl my-8 w-auto ">Superfast Collaboration<br/> Reimagined.</div> */}
+//   <TypingEffect />
+//   <div className="text-3xl">Brainstorm ideas with your team <br/>for free.</div>
+// </div>
+
+//   </div>
+
+//   {/* <HoveredCards cardContent={{heading:"das",content:"dasd"}}/> */}
+//   </div>   
+//     </>
+    
+//   )
+// }
+
+// import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect"
+
+
+// function TypingEffect(){
+// const words = [
+//   {text:"Superfast"},
+//   {text:"Collaboration"},
+//   {text:"Reimagined."},
+// ]
+// return(<>
+// <TypewriterEffectSmooth words={words} className=""/>
+// </>)
+// }
+
+// type cardText ={
+//   heading:string,
+//   content:string,
+//   customStyles:string
+// }
+
+// function HoveredCards({cardContent}:{cardContent:cardText}){
+
+//   return(
+//     <>
+//     <div className={`${cardContent.customStyles}`}>
+      
+//     dasdas
+//     </div>
+//     </>
+//   )
+
+// }
+import Image from "next/image"
+import Link from "next/link"
 export default function FinalComponent(){
-  return(
-    <>
- <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#bce7fd] to-white">
-  <div className="flex flex-row">
-<div>
-  {/* <div className="text-6xl my-8 w-auto ">Superfast Collaboration<br/> Reimagined.</div> */}
-  <TypingEffect />
-  <div className="text-3xl">Brainstorm ideas with your team <br/>for free.</div>
+  return (
+
+<>
+<div className="flex flex-col pt-4">
+    <nav className="flex flex-row justify-between">
+      <div className="flex flex-row sm:ml-16 ml-0 ">
+    <Image src={"/dark_logo.png"} alt="Journal" width={59} height={59} sizes="(max-width:768px) 30px 30px"/>
+    <span className="py-4 text-2xl">caderno</span>
+      </div>
+    <div className="flex flex-row sm:mr-16 sm:space-x-5 space-x-4 pt-4">
+      <Link href="/fc">
+    <button>Get Started</button>
+      </Link>
+      <Link href="/fc">
+    <button>Sign In</button>
+      </Link>
+    </div>
+    </nav>
+    <Image src={"/Elip2.png"} alt="animation 1" height={766} width={766}/>
+    <Image src={"/Elip1.png"} alt="animation 2" height={766} width={318}/>
+    <div className="flex max-w-fit ml-auto mr-auto pt-16 text-6xl pb-2">
+      Superfast Collaboration
+    </div>
+    <div className="flex max-w-fit ml-auto mr-auto text-6xl pt-2">
+Reimagined.
+    </div>
+    <div className="flex max-w-fit ml-auto mr-auto text-3xl mt-4">Brainstorm ideas with your</div>
+    <div className="flex max-w-fit ml-auto mr-auto text-3xl mt-4">team for free, instantly.</div>
+
+
+<div className="flex max-w-fit ml-auto mr-auto pt-16">
+<Image src={"/MacPro.png"} alt="Macbook Pro" width={800} height={529} sizes="(max-width:768px) 300px 176px,800px 470px"  />
 </div>
 
+<div className="flex flex-row justify-around">
+  <div className="text-4xl flex flex-col mt-32">
+  <div className="">Collaborate effortlessly,</div>
+  <div className="flex max-w-fit mr-auto ml-auto">anywhere.</div>
   </div>
-  {/* <HoveredCards cardContent={{heading:"das",content:"dasd"}}/> */}
-  </div>   
-    </>
-    
-  )
-}
+  <Image src={"/Rect1.png"} alt={"video1"} width={500} height={318}/>
 
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect"
+</div>
+
+<div className="flex flex-row justify-around">
+  <Image src={"/Rect2.png"} alt={"video1"} width={500} height={318}/>
+  <div className="text-4xl flex flex-col mt-32">
+  <div className="">Internet is no</div>
+  <div className="flex max-w-fit mr-auto ml-auto">problem.</div>
+  </div>
+
+</div>
+
+</div>
+
+</>
 
 
-function TypingEffect(){
-const words = [
-  {text:"Superfast"},
-  {text:"Collaboration"},
-  {text:"Reimagined."},
-]
-return(<>
-<TypewriterEffectSmooth words={words} className=""/>
-</>)
-}
-
-type cardText ={
-  heading:string,
-  content:string,
-  customStyles:string
-}
-
-function HoveredCards({cardContent}:{cardContent:cardText}){
-
-  return(
-    <>
-    <div className={`${cardContent.customStyles}`}>
-      
-    dasdas
-    </div>
-    </>
   )
 
 }

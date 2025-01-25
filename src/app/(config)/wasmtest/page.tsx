@@ -1,8 +1,8 @@
 'use client'
-import { useSQLite } from '@/store/sqlite';
+import {  useSQLiteNormalHook } from '@/store/sqlite';
 import { useEffect } from 'react';
 export default function MyComponent() {
-  const { db, error, loading } = useSQLite();
+  const { db, error, loading } = useSQLiteNormalHook();
 
   useEffect(() => {
     if (db) {

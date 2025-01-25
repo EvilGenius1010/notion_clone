@@ -12,7 +12,6 @@ import ShortcutMenu from "@/components/editor/ShortcutMenu";
 
 
 
-
 export default function Home() {
   const ShortcutMenuVisibility = useShortcutSpecifier.getState().menuVisibility
   // const { content, inc } = useModifiedContent()
