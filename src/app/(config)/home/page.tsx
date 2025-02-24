@@ -1,7 +1,6 @@
 "use client";
 
 import TipTapEditor from "@/components/editor/MainEditor"
-import { Button } from "@/components/ui/button";
 import useModifiedContent from "@/store/modifiedPageContent";
 import { useEffect } from "react";
 import useOldContent from "@/store/oldPageContent";
@@ -57,7 +56,6 @@ export default function Home() {
   return (
     <>
       <TipTapEditor onUpdate={processChanges}/>
-      {ShortcutMenuVisibility && <ShortcutMenu/>}
     </>
   )
 }

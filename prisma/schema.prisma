@@ -30,7 +30,7 @@ model Pages {
 }
 
 model PageSlices {
-  blockid String  @id @default(cuid())
+  blockid String  @id 
   page    Pages   @relation(fields: [pageid], references: [pageid])
   pageid  String // Foreign key for Pages
   order   Int // Order of the block within the page
