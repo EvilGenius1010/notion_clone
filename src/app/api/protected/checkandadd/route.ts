@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/db"
 import { getServerSession } from "next-auth";
 
-//@ts-ignore
-export async function POST(req,) {
+export async function POST(req:NextRequest,) {
   try {
     // const session = await getServerSession(req)
     const body = await req?.json();
